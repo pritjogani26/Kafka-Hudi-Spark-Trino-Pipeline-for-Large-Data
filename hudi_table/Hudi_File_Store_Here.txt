@@ -1,0 +1,2 @@
+Hudi_File_Store_Here.txt
+This is a Folder where .prquet file is stored by consumer.
