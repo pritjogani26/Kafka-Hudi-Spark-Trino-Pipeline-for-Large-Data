@@ -1,0 +1,23 @@
+docker-compose down
+docker-compose up -d
+
+docker exec -it kafka kafka-topics.sh --create --topic new-topic --bootstrap-server kafka:9092 --partitions 1 --replication-factor 1
+
+docker exec spark-hudi python /producer/kafka_producer.py
+
+docker exec -it spark-hudi bash
+spark-submit   --master local[*]   --packages org.apache.spark:spark-sql-kafka-0-10_2.12:3.4.1   --jars /opt/extra_jars/hudi-spark3.4-bundle_2.12-0.14.1.jar   /consumer/streaming_user_consumer.py
+
+
+docker exec -it trino trino --server http://localhost:8080 --catalog hudi --schema default
+
+SHOW TABLES;
+SELECT * FROM users_ro;
+SELECT COUNT(*) FROM users_rt;
+SELECT id, firstname, city FROM users_ro WHERE country='India' AND state='Gujarat' AND city='Ahmedabad' LIMIT 10;
+
+EXPLAIN SELECT * FROM users WHERE country = 'India' AND state = 'Gujarat';
+
+
+
+

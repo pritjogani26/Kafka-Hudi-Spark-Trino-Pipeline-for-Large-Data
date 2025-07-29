@@ -1,0 +1,76 @@
+# ..\Trino_Table\docker-compose.yml
+# docker-compose.yml
+
+services:
+  kafka:
+    image: bitnami/kafka:3.6.0
+    container_name: kafka
+    ports:
+      - "9092:9092"
+    environment:
+      - KAFKA_ENABLE_KRAFT=yes
+      - KAFKA_CFG_NODE_ID=1
+      - KAFKA_CFG_PROCESS_ROLES=controller,broker
+      - KAFKA_CFG_CONTROLLER_QUORUM_VOTERS=1@kafka:9093
+      - KAFKA_CFG_LISTENERS=PLAINTEXT://:9092,CONTROLLER://:9093
+      - KAFKA_CFG_ADVERTISED_LISTENERS=PLAINTEXT://kafka:9092
+      - KAFKA_CFG_CONTROLLER_LISTENER_NAMES=CONTROLLER
+      - KAFKA_CFG_AUTO_CREATE_TOPICS_ENABLE=true
+    networks:
+      - hudi-network
+
+  hive-metastore:
+    image: apache/hive:4.0.0-beta-1
+    container_name: hive-metastore
+    command: >
+      bash -c "schematool -dbType derby -initSchema && hive --service metastore"
+    ports:
+      - "9083:9083"
+    environment:
+      HIVE_METASTORE_USER: hive
+      SERVICE_NAME: metastore
+    volumes:
+      - ../hudi_table:/hudi_output
+    networks:
+      - hudi-network
+
+
+  trino:
+    image: trinodb/trino:445
+    container_name: trino
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./trino/etc:/etc/trino
+      - ../hudi_table:/hudi_output
+    depends_on:
+      - hive-metastore
+    networks:
+      - hudi-network
+
+  spark-hudi:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+    container_name: spark-hudi
+    depends_on:
+      - kafka
+    volumes:
+      - ../producer_service:/producer
+      - ../consumer_service:/consumer
+      - ../producer_data:/data
+      - ../Trino_Table/configs:/app/configs
+      - ../Trino_Table/jars:/opt/extra_jars
+      - ../hudi_table:/hudi_output
+      - ../consumer_service:/checkpoints
+      - ../snapshot_service:/snapshot
+      - ../snapshot_service:/snapshot
+
+    networks:
+      - hudi-network
+    environment:
+      - PYSPARK_PYTHON=python3
+
+networks:
+  hudi-network:
+    driver: bridge
