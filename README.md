@@ -3,7 +3,6 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<h1>Kafka-Hudi-Spark-Trino-Pipeline-for-Large-Data</h1>
 </head>
 <body>
 <h1><b>Kafka-Hudi-Spark-Trino-Pipeline-for-Large-Data</b></h1>
@@ -73,8 +72,7 @@ spark-submit --master local[*] --packages org.apache.spark:spark-sql-kafka-0-10_
 <h3><u>6. Stop Docker Containers</u></h3>
 <pre><code>docker-compose down</code></pre>
 <br>
-<h2>Information About Different Files</h2>
-<br>
+<h1>Information About Different Files</h1>
 <h2><u>Hudi Configuration</u></h2>
 
 <p>This <b>hudi_config.py</b> file contains configuration settings for writing data to a Hudi table. Below is a breakdown of the key configurations:</p>
