@@ -1,4 +1,3 @@
-# E:\producer_service\kafka_producer.py
 # producer/producer.py
 import json
 import time
