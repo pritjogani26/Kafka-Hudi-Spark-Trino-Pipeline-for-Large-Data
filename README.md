@@ -72,6 +72,7 @@ spark-submit --master local[*] --packages org.apache.spark:spark-sql-kafka-0-10_
 
 <h3><u>6. Stop Docker Containers</u></h3>
 <pre><code>docker-compose down</code></pre>
+<br><br>
 
 <h2><u>Hudi Configuration</u></h2>
 
