@@ -1,4 +1,3 @@
-# E:\Trino_Table\docker\Dockerfile
 # docker\Dockerfile
 FROM bitnami/spark:3.4.1
 
