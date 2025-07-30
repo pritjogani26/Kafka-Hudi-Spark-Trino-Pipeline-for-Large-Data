@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Kafka-Hudi-Spark-Trino-Pipeline-for-Large-Data</title>
+<h1>Kafka-Hudi-Spark-Trino-Pipeline-for-Large-Data</h1>
 </head>
 <body>
 <h1><b>Kafka-Hudi-Spark-Trino-Pipeline-for-Large-Data</b></h1>
