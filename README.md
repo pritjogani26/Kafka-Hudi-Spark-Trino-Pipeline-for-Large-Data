@@ -1,19 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Kafka-Hudi-Spark-Trino Pipeline Documentation</title>
-<style>
-body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; max-width: 1200px; margin: 0 auto; padding: 20px; }
-h1, h2, h3, h4, h5 { color: #2c3e50; margin-top: 24px; }
-pre { background: #f8f9fa; padding: 15px; border-radius: 5px; overflow: auto; }
-code { background: #f0f0f0; padding: 2px 5px; border-radius: 3px; }
-table { border-collapse: collapse; width: 100%; margin: 20px 0; }
-th, td { border: 1px solid #ddd; padding: 10px; text-align: left; }
-th { background-color: #f2f2f2; }
-.architecture { background: #e8f4f8; padding: 15px; border-left: 4px solid #3498db; margin: 20px 0; }
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kafka-Hudi-Spark-Trino Pipeline Documentation</title>
+    <style>
+        body { 
+            font-family: Arial, sans-serif; 
+            line-height: 1.6; 
+            color: #333; 
+            max-width: 1200px; 
+            margin: 0 auto; 
+            padding: 20px; 
+        }
+        h1, h2, h3, h4, h5 { 
+            color: #2c3e50; 
+            margin-top: 24px; 
+        }
+        pre { 
+            background: #f8f9fa; 
+            padding: 15px; 
+            border-radius: 5px; 
+            overflow: auto; 
+        }
+        code { 
+            background: #f0f0f0; 
+            padding: 2px 5px; 
+            border-radius: 3px; 
+        }
+        table { 
+            border-collapse: collapse; 
+            width: 100%; 
+            margin: 20px 0; 
+        }
+        th, td { 
+            border: 1px solid #ddd; 
+            padding: 10px; 
+            text-align: left; 
+        }
+        th { 
+            background-color: #f212f2; 
+            color: white;
+        }
+        .architecture { 
+            background: #e8f4f8; 
+            padding: 15px; 
+            border-left: 4px solid #3498db; 
+            margin: 20px 0; 
+        }
+        .container {
+            display: flex;
+            gap: 20px;
+            margin: 30px 0;
+        }
+        .card {
+            flex: 1;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+    </style>
 </head>
 <body>
 <h1>Kafka-Hudi-Spark-Trino Pipeline for Large Data</h1>
