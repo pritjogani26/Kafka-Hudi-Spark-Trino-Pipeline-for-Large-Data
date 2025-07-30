@@ -72,8 +72,9 @@ spark-submit --master local[*] --packages org.apache.spark:spark-sql-kafka-0-10_
 
 <h3><u>6. Stop Docker Containers</u></h3>
 <pre><code>docker-compose down</code></pre>
-<br><br>
-
+<br>
+<h2>Information About Different Files</h2>
+<br>
 <h2><u>Hudi Configuration</u></h2>
 
 <p>This <b>hudi_config.py</b> file contains configuration settings for writing data to a Hudi table. Below is a breakdown of the key configurations:</p>
